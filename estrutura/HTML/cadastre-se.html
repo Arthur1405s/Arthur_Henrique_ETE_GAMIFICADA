@@ -13,7 +13,7 @@
   
   <!-- Importa o arquivo CSS que vai estilizar a página -->
   <link rel="stylesheet" href="../CSS/cadastre-se.css" />
-<!-- </head> -->
+</head>
 <img src="../img/logo-ete-2.png" alt="logo ete 2" class="logo-ete">
 <body>
   <!-- Container central que segura todo o conteúdo do formulário -->
@@ -24,9 +24,19 @@
     <!-- Logo ou ícone decorativo do Mario -->
 <img src="../img/cogumelo.png" alt="Cogumelo do Mario" style="display:block; margin:0 auto 15px; width: 50px;">
 
+      
+
     <!-- Início do formulário. Ele será tratado pelo JavaScript -->
     <form id="form-cadastro">
-      
+      <!-- SELEÇÃO DO TIPO DE USUÁRIO -->
+          <label for="tipoUsuario">Tipo de Usuário:</label>
+          <select id="tipoUsuario" name="tipoUsuario" required>
+          <option value="" disabled selected>Selecione</option>
+          <option value="aluno">Aluno</option>
+         <option value="professor">Professor</option>
+         <option value="admin">Administrador</option>
+        </select>
+
       <!-- Campo para o nome -->
       <label for="nome">Nome Completo:</label>
       <input type="text" id="nome" name="nome" required />
@@ -52,6 +62,7 @@
       <a href="../HTML/login.html" class="botao-voltar-fixo">Voltar
 
 </a>
+<form onsubmit="return validarSenha()" >
 
     </form>
 
@@ -61,5 +72,21 @@
 
   <!-- Importa o script JavaScript que adiciona a lógica do formulário -->
   <script src="../JS/cadastre-se.js"></script>
+  <script>
+  function validarSenha() {
+    const senha = document.getElementById("senha").value;
+
+    // Expressão regular: pelo menos 8 caracteres, uma maiúscula, uma minúscula, um número e um símbolo
+    const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
+
+    if (!regex.test(senha)) {
+      alert("A senha deve conter pelo menos:\n- 8 caracteres\n- 1 letra maiúscula\n- 1 letra minúscula\n- 1 número\n- 1 símbolo");
+      return false; // impede o envio do formulário
+    }
+
+    return true; // senha válida
+  }
+</script>
+
 </body>
 </html>

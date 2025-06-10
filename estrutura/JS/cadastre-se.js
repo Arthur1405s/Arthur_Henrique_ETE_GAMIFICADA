@@ -42,3 +42,19 @@ if (Number(senha1.value) == Number(senha2.value)) {
 } else{
     alert('As senhas não são iguais!');
 }
+document.addEventListener('DOMContentLoaded', () => {
+  const senhaInput = document.getElementById('senha');
+  const msgSenha = document.getElementById('msgSenha');
+
+  const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
+
+  senhaInput.addEventListener('input', () => {
+    const senha = senhaInput.value;
+
+    if (!regex.test(senha)) {
+      msgSenha.textContent = "A senha precisa conter: mínimo 8 caracteres, letras maiúsculas e minúsculas, números e caracteres especiais.";
+    } else {
+      msgSenha.textContent = "";
+    }
+  });
+});
