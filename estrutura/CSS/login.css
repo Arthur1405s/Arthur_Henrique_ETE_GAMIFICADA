@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+* {
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: "Press Start 2P", cursive;
+}
+
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-image: url('../img/marinho.jpeg'); 
+    background-size: cover;
+    background-position: center;
+    object-fit: cover;
+}
+
+.lembrar-senha {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 16px; /* ou menor se preferir */
+    white-space: nowrap; /* impede quebra de linha */
+}
+
+.containt {
+    width: 420px;
+    background-color: rgba(253, 251, 251, 0.6); /* Branco com transparência */
+    border: 2px solid;
+    border-radius: 20px;
+    color:#ff0000;
+    padding: 30px 40px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    backdrop-filter: blur(2px);
+
+}
+
+.containt h1 {
+    font-size: 20px;
+    text-align: center;
+    text-shadow: 2px 2px #ffcc00; /* Sombra dourada tipo bloco ? */
+    font-size: 30px;
+}
+
+.input-box{
+    position: relative;
+    width: 100%;
+    height: 50px;
+    margin: 30px 0;
+}
+
+.input-box input {
+    width: 100%;
+    height: 100%;
+    background-color: floralwhite;
+    border: 2px solid;
+    border-radius: 40px;
+    outline: none;
+    font-size: 16px;
+    color: black;
+    padding: 20px 45px 20px 20px;
+}
+
+.input-box input::placeholder {
+    color: #000000;
+}
+
+.input-box i {
+    position: absolute;
+    right: 20px;
+    font-size: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+
+}
+
+.remember-forgot {
+    display: flex;
+    justify-content: space-between;
+    margin: -15px 0 15px;
+}
+
+.remember-forgot label input {
+    accent-color: #fff;
+    margin-right: 5px;
+} 
+
+.remember-forgot a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.remember-forgot a:hover {
+    text-decoration: underline;
+}
+
+.login {
+    width: 100%;
+    height: 50px;
+    background-color: #fff;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+    font-size: 16px;
+    color: #333;
+    font-weight: 600;
+    margin-top: 20px;
+}
+
+.login:hover{
+    background-color: transparent;
+    border: 2px solid;
+    color:#fff;
+    transition: 0.5s;
+}
+
+.registro {
+    font-size: 14px;
+    text-align: center;
+    margin: 20px 0 15px;
+    
+    
+}
+
+.registro a {
+    text-decoration: none;
+    color: #0043fa;
+    font-weight: 600;
+    position: relative;
+    top: 12px;
+    
+}
+
+
+
+.registro a:hover {
+    text-decoration:underline;
+}
+
+.top-right-image {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 100px; /* ajusta o tamanho conforme quiser */
+    height: auto;
+    z-index: 1000; /* garante que fique na frente, se precisar */
+}
+
+.esqueci-senha {
+
+        font-family: 'Press Start 2P', cursive;
+        font-size: 16px;
+        white-space: nowrap;
+        position: relative;
+        top: 20px;
+        margin: 50px;
+        color: #0043fa !important
+    }

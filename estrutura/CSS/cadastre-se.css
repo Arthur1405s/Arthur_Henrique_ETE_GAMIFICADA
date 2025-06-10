@@ -1,0 +1,133 @@
+/* Estiliza o corpo da página inteira */
+/* Importa uma fonte estilo 8-bits do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+/* Estiliza o fundo da página */
+body {
+  font-family: 'Press Start 2P', cursive; /* Fonte estilo retrô/gamer */
+  background-image: url('../img/tela de frundo cadastro.jpeg'); /* Fundo com imagem do Mario */
+  background-size: cover; /* Ajusta imagem para cobrir tudo */
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0; /* Remove margens padrão */
+}
+
+/* Container branco com borda estilo bloco */
+.container {
+  background-color: rgba(253, 251, 251, 0.9); /* Branco com transparência */
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Sombra mais forte */
+  width: 350px;
+  border: 4px solid #d31212; /* Borda vermelha estilo Mario */
+}
+
+/* Título com cor vibrante */
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #d90000; /* Vermelho do chapéu do Mario */
+  text-shadow: 2px 2px #ffcc00; /* Sombra dourada tipo bloco ? */
+  font-size: 16px;
+}
+
+/* Labels com toque nostálgico */
+  label {
+    display: block; /* Faz o label ocupar uma linha inteira */
+    margin: 10px auto 5px auto; /* Centraliza verticalmente e horizontalmente */
+    width: 80%; /* Mesma largura dos inputs */
+    color: #333;
+    text-align: left; /* Ou use 'center' se quiser o texto centralizado */
+    font-size: 15px; /* Deixa o tamanho proporcional à fonte dos inputs */
+  
+}
+
+/* Campos de entrada com toque pixelado */
+input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 12px;
+  border: 2px solid #d4d1d1;
+  border-radius: 8px;
+  font-family:Arial, Helvetica, sans-serif;
+  font-size: 15px;
+}
+input {
+  display: block; /* Faz cada input ser em linha separada */
+  margin: 0 auto 12px auto; /* Centraliza com auto nas laterais */
+  width: 80%; /* Reduz a largura pra 80% do container */
+  padding: 10px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 10px;
+  text-align: left; /* (opcional) centraliza o texto dentro do campo */
+}
+
+
+
+/* Botão temático estilo "Start Game" */
+button {
+  width: 100%;
+  padding: 12px;
+  background-color: #ffcc00; /* Dourado tipo bloco ? */
+  border: 3px solid #d90000; /* Borda vermelha */
+  color: #000;
+  border-radius: 10px;
+  font-size: 10px;
+  font-family: 'Press Start 2P', cursive;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+/* Efeito ao passar o mouse no botão */
+button:hover {
+  background-color: #ffd700;
+  transform: scale(1.05); /* Dá um pequeno zoom */
+}
+
+/* Mensagem abaixo do formulário */
+#mensagem {
+  text-align: center;
+  margin-top: 15px;
+  font-weight: bold;
+  color: #006400;
+  font-size: 10px;
+}
+/* Botão fixo no canto superior esquerdo */
+.botao-voltar-fixo {
+  position: fixed; /* Fixa o botão na tela */
+  top: 20px;       /* Distância do topo */
+  left: 20px;      /* Distância da esquerda */
+  background-color: #ffcc00; /* Dourado */
+  border: 3px solid #d90000; /* Vermelho */
+  color: #000;
+  padding: 10px 15px;
+  border-radius: 10px;
+  font-size: 10px;
+  font-family: 'Press Start 2P', cursive;
+  text-decoration: none; /* Remove sublinhado padrão de links */
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  z-index: 1000; /* Garante que fique acima de outros elementos */
+}
+
+/* Efeito hover */
+.botao-voltar-fixo:hover {
+  background-color: #ffd700;
+  transform: scale(1.05);
+}
+
+.logo-ete {
+
+  position: absolute;
+    top: 1px;
+    right: 20px;
+    width: 100px; /* ajusta o tamanho conforme quiser */
+    height: auto;
+    z-index: 1000;
+}

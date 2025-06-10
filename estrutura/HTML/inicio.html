@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Página Inicial - Escola Gamificada</title>
+
+  <!-- Fonte retrô estilo 8-bits -->
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+  <!-- Importa o CSS externo -->
+  <link rel="stylesheet" href="../CSS/inicio.css" />
+</head>
+<body>
+
+  <!-- BOTÃO DE MENU (ícone do cubo do Mario) -->
+  <button class="menu-toggle" id="menuToggle">
+    <img src="../img/cubo.png" alt="Abrir Menu">
+  </button>
+
+  <!-- PAINEL DE STATUS FIXO AO LADO DO BOTÃO DE MENU -->
+  <div class="painel-status" id="painelStatus">
+    <div class="status-card">
+      <p><strong>Nome:</strong>João Mario</p>
+      <p><strong>Casa:</strong>Reino de cogumelos</p>
+    </div>
+  </div>
+
+  <!-- SIDEBAR LATERAL -->
+  <div class="sidebar" id="sidebar">
+
+    <!-- INFORMAÇÕES DO USUÁRIO -->
+    <div class="user-info-sidebar">
+      <div>Usuário: João Mario</div>
+      <span>PC$: 120</span>
+    </div>
+
+    <!-- LINKS DE NAVEGAÇÃO -->
+    <nav class="nav-links">
+      <a href="#">Início</a>
+      <a href="#">Leilão</a>
+      <a href="#">Perfil</a>
+      <a href="#">Tabela de Pontos</a>
+      <a href="#">Trocas por Benefícios</a>
+      <a href="#">Regras da Taça das Casas</a>
+    </nav>
+
+    <!-- BOTÃO DE SAIR -->
+    <a href="login.html" class="logout-btn">Sair</a>
+
+  </div>
+
+  <!-- CONTEÚDO PRINCIPAL -->
+  <main>
+    <!-- Seção futura -->
+  </main>
+ 
+
+  <!-- SCRIPT PARA TOGGLE DO MENU -->
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const sidebar = document.getElementById('sidebar');
+    const painelStatus = document.getElementById('painelStatus');
+
+    // Alterna classe "open" no sidebar e move o painel de status junto
+    menuToggle.addEventListener('click', () => {
+      sidebar.classList.toggle('open');
+
+      if (sidebar.classList.contains('open')) {
+        painelStatus.style.left = '290px'; // sidebar (250px) + margem
+      } else {
+        painelStatus.style.left = '70px'; // posição padrão
+      }
+    });
+  </script>
+</body>
+</html>

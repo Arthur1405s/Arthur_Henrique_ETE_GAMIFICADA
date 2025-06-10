@@ -1,0 +1,65 @@
+<!-- Define o tipo de documento como HTML5 -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <!-- Define o conjunto de caracteres, necessário para acentuação -->
+  <meta charset="UTF-8" />
+  
+  <!-- Torna o layout responsivo (funciona bem em celular/tablet) -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- Título da aba do navegador -->
+  <title>Cadastro - Escola Gamificada</title>
+  
+  <!-- Importa o arquivo CSS que vai estilizar a página -->
+  <link rel="stylesheet" href="../CSS/cadastre-se.css" />
+<!-- </head> -->
+<img src="../img/logo-ete-2.png" alt="logo ete 2" class="logo-ete">
+<body>
+  <!-- Container central que segura todo o conteúdo do formulário -->
+  <div class="container">
+    <!-- Título principal -->
+    <h2>Cadastro</h2>
+
+    <!-- Logo ou ícone decorativo do Mario -->
+<img src="../img/cogumelo.png" alt="Cogumelo do Mario" style="display:block; margin:0 auto 15px; width: 50px;">
+
+    <!-- Início do formulário. Ele será tratado pelo JavaScript -->
+    <form id="form-cadastro">
+      
+      <!-- Campo para o nome -->
+      <label for="nome">Nome Completo:</label>
+      <input type="text" id="nome" name="nome" required />
+      <!-- 'required' faz com que o campo seja obrigatório -->
+
+      <!-- Campo para o e-mail -->
+      <label for="email">E-mail:</label>
+      <input type="email" id="email" name="email" required />
+      <!-- type="email" ajuda a validar se é um email válido -->
+
+      <!-- Campo para a senha -->
+      <label for="senha">Senha:</label>
+      <input type="password" id="senha" name="senha" required />
+      <!-- type="password" oculta os caracteres -->
+
+      <!-- Campo para confirmar a senha -->
+      <label for="confirmarSenha">Confirmar Senha:</label>
+      <input type="password" id="confirmarSenha" name="confirmarSenha" required />
+
+      <!-- Botão para enviar o formulário -->
+      <button type="submit">Cadastrar</button>
+      <!-- Botão de Voltar -->
+      <a href="../HTML/login.html" class="botao-voltar-fixo">Voltar
+
+</a>
+
+    </form>
+
+    <!-- Parágrafo onde aparecerão mensagens de erro ou sucesso -->
+    <p id="mensagem"></p>
+  </div>
+
+  <!-- Importa o script JavaScript que adiciona a lógica do formulário -->
+  <script src="../JS/cadastre-se.js"></script>
+</body>
+</html>
