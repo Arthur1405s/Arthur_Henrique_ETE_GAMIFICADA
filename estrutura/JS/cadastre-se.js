@@ -1,60 +1,106 @@
-// script.js
-
-// Pega o formulário pelo ID
-const form = document.getElementById('form-cadastro');
-
-// Pega o parágrafo onde vamos exibir mensagens
-const mensagem = document.getElementById('mensagem');
-
-// Adiciona um "ouvinte" de evento para o envio do formulário
-form.addEventListener('submit', function(event) {
-  event.preventDefault(); // Impede que o formulário recarregue a página
-
-  // Captura os valores digitados nos campos, removendo espaços extras com trim()
-  const nome = document.getElementById('nome').value.trim();
-  const email = document.getElementById('email').value.trim();
-  const senha = document.getElementById('senha').value;
-  const confirmarSenha = document.getElementById('confirmarSenha').value;
-
-  // Verifica se a senha é igual à confirmação
-  if (senha !== confirmarSenha) {
-    mensagem.style.color = 'red'; // Define a cor da mensagem para vermelho
-    mensagem.textContent = 'As senhas não coincidem!'; // Mostra o erro
-    return; // Interrompe a execução do restante da função
-  }
-
-  // Aqui poderia ir um código para enviar os dados para um servidor (backend)
-  // Exemplo: fetch('https://api.escolagamificada.com/cadastro', { method: 'POST', body: JSON.stringify({ nome, email, senha }) })
-
-  // Se deu tudo certo, mostra mensagem de sucesso
-  mensagem.style.color = 'green'; // Cor da mensagem: verde
-  mensagem.textContent = `Cadastro realizado com sucesso, ${nome}!`; // Saudação personalizada
-
-  // Limpa os campos do formulário
-  form.reset();
-});
-
-const senha1 = document.getElementById('senha');
-const senha2 = document.getElementById('confirmarSenha');
-
-if (Number(senha1.value) == Number(senha2.value)) {
-    alert('As senhas são iguais!');
-} else{
-    alert('As senhas não são iguais!');
-}
+// Aguarda o carregamento do DOM
 document.addEventListener('DOMContentLoaded', () => {
+  // Seleciona elementos importantes
+  const form = document.getElementById('form-cadastro');
+  const mensagemGeral = document.getElementById('mensagem');
   const senhaInput = document.getElementById('senha');
-  const msgSenha = document.getElementById('msgSenha');
+  const confirmarSenhaInput = document.getElementById('confirmarSenha');
+  const mensagemSenha = document.getElementById('mensagem-senha');
+  const mensagemConfirmarSenha = document.getElementById('mensagem-confirmar-senha');
 
-  const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
+  // Regex para validar senha forte:
+  // Pelo menos 8 caracteres
+  // Pelo menos 1 letra minúscula
+  // Pelo menos 1 letra maiúscula
+  // Pelo menos 1 número
+  // Pelo menos 1 caractere especial (não alfanumérico)
+  const regexSenhaForte = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
 
+  // Validação em tempo real da senha (ao digitar)
   senhaInput.addEventListener('input', () => {
     const senha = senhaInput.value;
 
-    if (!regex.test(senha)) {
-      msgSenha.textContent = "A senha precisa conter: mínimo 8 caracteres, letras maiúsculas e minúsculas, números e caracteres especiais.";
+    if (!regexSenhaForte.test(senha)) {
+      mensagemSenha.textContent = 'A senha deve ter 8+ caracteres, letra maiúscula, minúscula, número e caractere especial.';
     } else {
-      msgSenha.textContent = "";
+      mensagemSenha.textContent = '';
     }
+
+    // Também limpa a mensagem de confirmação se senha mudar
+    mensagemConfirmarSenha.textContent = '';
+  });
+
+  // Validação em tempo real da confirmação da senha
+  confirmarSenhaInput.addEventListener('input', () => {
+    if (confirmarSenhaInput.value !== senhaInput.value) {
+      mensagemConfirmarSenha.textContent = 'As senhas não coincidem!';
+    } else {
+      mensagemConfirmarSenha.textContent = '';
+    }
+  });
+
+  // Ao enviar o formulário
+  form.addEventListener('submit', (event) => {
+    event.preventDefault(); // Previne envio padrão (reload)
+
+    const nome = document.getElementById('nome').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const tipoUsuario = document.getElementById('tipoUsuario').value;
+    const senha = senhaInput.value;
+    const confirmarSenha = confirmarSenhaInput.value;
+
+    // Verifica senha forte
+    if (!regexSenhaForte.test(senha)) {
+      mensagemGeral.style.color = 'red';
+      mensagemGeral.textContent = 'Senha fraca! Atenda aos requisitos mínimos.';
+      senhaInput.focus();
+      return;
+    }
+
+    // Verifica se as senhas coincidem
+    if (senha !== confirmarSenha) {
+      mensagemGeral.style.color = 'red';
+      mensagemGeral.textContent = 'As senhas não coincidem!';
+      confirmarSenhaInput.focus();
+      return;
+    }
+
+    // Verifica se o tipo de usuário foi selecionado
+    if (!tipoUsuario) {
+      mensagemGeral.style.color = 'red';
+      mensagemGeral.textContent = 'Por favor, selecione o tipo de usuário.';
+      document.getElementById('tipoUsuario').focus();
+      return;
+    }
+
+    // Aqui você pode enviar os dados para o backend via fetch, axios, etc.
+    // Exemplo fictício:
+    /*
+    fetch('/api/cadastrar', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ nome, email, tipoUsuario, senha })
+    })
+    .then(res => res.json())
+    .then(data => {
+      mensagemGeral.style.color = 'green';
+      mensagemGeral.textContent = `Cadastro realizado com sucesso, ${nome}!`;
+      form.reset();
+    })
+    .catch(err => {
+      mensagemGeral.style.color = 'red';
+      mensagemGeral.textContent = 'Erro ao cadastrar, tente novamente.';
+    });
+    */
+
+    // Simulação de sucesso:
+    mensagemGeral.style.color = 'green';
+    mensagemGeral.textContent = `Cadastro realizado com sucesso, ${nome}!`;
+
+    // Limpa formulário
+    form.reset();
+    // Limpa mensagens de erro
+    mensagemSenha.textContent = '';
+    mensagemConfirmarSenha.textContent = '';
   });
 });

@@ -1,92 +1,67 @@
-<!-- Define o tipo de documento como HTML5 -->
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <!-- Define o conjunto de caracteres, necessário para acentuação -->
   <meta charset="UTF-8" />
-  
-  <!-- Torna o layout responsivo (funciona bem em celular/tablet) -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
-  <!-- Título da aba do navegador -->
   <title>Cadastro - Escola Gamificada</title>
-  
-  <!-- Importa o arquivo CSS que vai estilizar a página -->
+
+  <!-- Link para seu arquivo CSS -->
   <link rel="stylesheet" href="../CSS/cadastre-se.css" />
 </head>
-<img src="../img/logo-ete-2.png" alt="logo ete 2" class="logo-ete">
+
 <body>
-  <!-- Container central que segura todo o conteúdo do formulário -->
+  <!-- Logo da escola no topo direito -->
+  <img src="../img/logo-ete-2.png" alt="logo ete 2" class="logo-ete" />
+
   <div class="container">
-    <!-- Título principal -->
     <h2>Cadastro</h2>
 
-    <!-- Logo ou ícone decorativo do Mario -->
-<img src="../img/cogumelo.png" alt="Cogumelo do Mario" style="display:block; margin:0 auto 15px; width: 50px;">
+    <!-- Imagem decorativa -->
+    <img src="../img/cogumelo.png" alt="Cogumelo do Mario" style="display:block; margin:0 auto 15px; width: 50px;" />
 
-      
+    <!-- Formulário de cadastro -->
+    <form id="form-cadastro" novalidate>
+      <!-- Tipo de usuário -->
+      <label for="tipoUsuario">Tipo de Usuário:</label>
+      <select id="tipoUsuario" name="tipoUsuario" required>
+        <option value="" disabled selected>Selecione</option>
+        <option value="aluno">Aluno</option>
+        <option value="professor">Professor</option>
+        <option value="admin">Administrador</option>
+      </select>
 
-    <!-- Início do formulário. Ele será tratado pelo JavaScript -->
-    <form id="form-cadastro">
-      <!-- SELEÇÃO DO TIPO DE USUÁRIO -->
-          <label for="tipoUsuario">Tipo de Usuário:</label>
-          <select id="tipoUsuario" name="tipoUsuario" required>
-          <option value="" disabled selected>Selecione</option>
-          <option value="aluno">Aluno</option>
-         <option value="professor">Professor</option>
-         <option value="admin">Administrador</option>
-        </select>
-
-      <!-- Campo para o nome -->
+      <!-- Nome completo -->
       <label for="nome">Nome Completo:</label>
       <input type="text" id="nome" name="nome" required />
-      <!-- 'required' faz com que o campo seja obrigatório -->
 
-      <!-- Campo para o e-mail -->
+      <!-- Email -->
       <label for="email">E-mail:</label>
       <input type="email" id="email" name="email" required />
-      <!-- type="email" ajuda a validar se é um email válido -->
 
-      <!-- Campo para a senha -->
+      <!-- Senha -->
       <label for="senha">Senha:</label>
       <input type="password" id="senha" name="senha" required />
-      <!-- type="password" oculta os caracteres -->
+      <!-- Mensagem de erro para senha -->
+      <div id="mensagem-senha" class="mensagem-erro"></div>
 
-      <!-- Campo para confirmar a senha -->
+      <!-- Confirmar senha -->
       <label for="confirmarSenha">Confirmar Senha:</label>
       <input type="password" id="confirmarSenha" name="confirmarSenha" required />
+      <!-- Mensagem de erro para confirmação -->
+      <div id="mensagem-confirmar-senha" class="mensagem-erro"></div>
 
-      <!-- Botão para enviar o formulário -->
+      <!-- Botão enviar -->
       <button type="submit">Cadastrar</button>
-      <!-- Botão de Voltar -->
-      <a href="../HTML/login.html" class="botao-voltar-fixo">Voltar
-
-</a>
-<form onsubmit="return validarSenha()" >
-
     </form>
 
-    <!-- Parágrafo onde aparecerão mensagens de erro ou sucesso -->
+    <!-- Botão voltar fixo -->
+    <a href="../HTML/login.html" class="botao-voltar-fixo">Voltar</a>
+
+    <!-- Mensagem geral de status -->
     <p id="mensagem"></p>
   </div>
 
-  <!-- Importa o script JavaScript que adiciona a lógica do formulário -->
+  <!-- Importa o script JavaScript -->
   <script src="../JS/cadastre-se.js"></script>
-  <script>
-  function validarSenha() {
-    const senha = document.getElementById("senha").value;
-
-    // Expressão regular: pelo menos 8 caracteres, uma maiúscula, uma minúscula, um número e um símbolo
-    const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
-
-    if (!regex.test(senha)) {
-      alert("A senha deve conter pelo menos:\n- 8 caracteres\n- 1 letra maiúscula\n- 1 letra minúscula\n- 1 número\n- 1 símbolo");
-      return false; // impede o envio do formulário
-    }
-
-    return true; // senha válida
-  }
-</script>
-
 </body>
 </html>
