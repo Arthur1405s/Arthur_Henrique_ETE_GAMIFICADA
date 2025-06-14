@@ -1,0 +1,140 @@
+/* ===== Fonte Retro ===== */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+/* ===== Estilo Global ===== */
+body {
+  margin: 0;
+  font-family: 'Press Start 2P', cursive;
+  background-color: beige;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ===== Botão do Menu ===== */
+.menu-toggle {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1000; /* acima de tudo */
+}
+
+.menu-toggle img {
+  width: 40px;
+  height: 40px;
+}
+
+/* ===== Painel de Status do Jogador (fixo) ===== */
+.painel-status {
+  position: fixed;
+  top: 20px;
+  left: 70px;
+  z-index: 999;
+  transition: left 0.3s ease-in-out;
+}
+
+/* Cartão com informações */
+.status-card {
+  background-color: rgba(255, 255, 255, 0.25);
+  padding: 10px 15px;
+  border-radius: 10px;
+  font-size: 9px;
+  color: #000;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+/* Texto do status */
+.status-card p {
+  margin: 4px 0;
+  font-size: 9px;
+}
+
+/* ===== Sidebar Lateral ===== */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  box-shadow: 4px 0 10px rgba(0, 0, 0, 0.3);
+  padding: 90px 20px 20px;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
+  z-index: 998;
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Quando aberta, aparece */
+.sidebar.open {
+  transform: translateX(0);
+}
+
+/* ===== Info do Usuário no topo da sidebar ===== */
+.user-info-sidebar {
+  background-color: rgba(255, 255, 255, 0.3);
+  color: #000;
+  text-align: center;
+  padding: 15px 10px;
+  border-radius: 10px;
+  font-size: 9px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+/* Pontuação do usuário */
+.user-info-sidebar span {
+  display: block;
+  margin-top: 5px;
+  font-size: 8px;
+  color: green;
+}
+
+/* ===== Links de Navegação ===== */
+.nav-links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.nav-links a {
+  background: rgba(255, 255, 255, 0.25);
+  text-align: center;
+  padding: 10px;
+  border-radius: 12px;
+  text-decoration: none;
+  color: #000;
+  font-size: 9px;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.nav-links a:hover {
+  background: rgba(255, 255, 255, 0.4);
+  color: #d90000;
+}
+
+/* ===== Botão de Sair ===== */
+.logout-btn {
+  background-color: #ff4d4d;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  font-size: 9px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.logout-btn:hover {
+  background-color: #cc0000;
+}
