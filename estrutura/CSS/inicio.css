@@ -1,18 +1,27 @@
-/* ===== Fonte Retro ===== */
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
-/* ===== Estilo Global ===== */
 body {
   margin: 0;
   font-family: 'Press Start 2P', cursive;
-  background-color: beige;
+  background-color: rgb(39, 39, 36);
   background-size: cover;
   background-position: center;
   height: 100vh;
   overflow-x: hidden;
 }
 
-/* ===== Botão do Menu ===== */
+/* ===== Banner com título ===== */
+.titulo-banner {
+  text-align: center;
+  margin-top: 40px;
+  color: #ffee00;
+}
+
+.titulo-banner h1 {
+  font-size: 20px;
+}
+
+/* ===== Botão de Menu ===== */
 .menu-toggle {
   position: fixed;
   top: 20px;
@@ -20,7 +29,7 @@ body {
   background: none;
   border: none;
   cursor: pointer;
-  z-index: 1000; /* acima de tudo */
+  z-index: 1000;
 }
 
 .menu-toggle img {
@@ -28,7 +37,7 @@ body {
   height: 40px;
 }
 
-/* ===== Painel de Status do Jogador (fixo) ===== */
+/* ===== Painel de Status ===== */
 .painel-status {
   position: fixed;
   top: 20px;
@@ -37,7 +46,6 @@ body {
   transition: left 0.3s ease-in-out;
 }
 
-/* Cartão com informações */
 .status-card {
   background-color: rgba(255, 255, 255, 0.25);
   padding: 10px 15px;
@@ -47,13 +55,12 @@ body {
   border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
-/* Texto do status */
 .status-card p {
   margin: 4px 0;
   font-size: 9px;
 }
 
-/* ===== Sidebar Lateral ===== */
+/* ===== Sidebar ===== */
 .sidebar {
   position: fixed;
   top: 0;
@@ -73,12 +80,10 @@ body {
   gap: 20px;
 }
 
-/* Quando aberta, aparece */
 .sidebar.open {
   transform: translateX(0);
 }
 
-/* ===== Info do Usuário no topo da sidebar ===== */
 .user-info-sidebar {
   background-color: rgba(255, 255, 255, 0.3);
   color: #000;
@@ -89,7 +94,6 @@ body {
   border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
-/* Pontuação do usuário */
 .user-info-sidebar span {
   display: block;
   margin-top: 5px;
@@ -97,7 +101,6 @@ body {
   color: green;
 }
 
-/* ===== Links de Navegação ===== */
 .nav-links {
   display: flex;
   flex-direction: column;
@@ -118,10 +121,9 @@ body {
 
 .nav-links a:hover {
   background: rgba(255, 255, 255, 0.4);
-  color: #d90000;
+  color: #f11616;
 }
 
-/* ===== Botão de Sair ===== */
 .logout-btn {
   background-color: #ff4d4d;
   color: white;
@@ -136,5 +138,157 @@ body {
 }
 
 .logout-btn:hover {
-  background-color: #cc0000;
+  background-color: #cf1212;
+}
+
+/* ===== Imagem no carrossel ===== */
+.caixa-conteudo img {
+  width: 280px;
+  height: auto;
+  border-radius: 15px;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 20px rgba(255, 255, 0, 0.4), 0 0 40px rgba(255, 255, 0, 0.2);
+  animation: fumaçaGlow 2s infinite alternate ease-in-out;
+  transition: transform 0.3s ease;
+}
+
+@keyframes fumaçaPulsante {
+  0%, 100% {
+    box-shadow:
+      0 0 20px rgba(255, 255, 0, 0.5),
+      0 0 40px rgba(255, 255, 0, 0.3),
+      0 0 60px rgba(255, 255, 0, 0.2);
+    transform: translateY(0) translateX(0);
+  }
+  50% {
+    box-shadow:
+      0 0 30px rgba(255, 255, 0, 0.8),
+      0 0 50px rgba(255, 255, 0, 0.5),
+      0 0 80px rgba(255, 255, 0, 0.4);
+    transform: translateY(-4px) translateX(3px);
+  }
+}
+
+.caixa-conteudo img {
+  animation: fumaçaPulsante 2s ease-in-out infinite;
+  border-radius: 15px;
+  border: 2px solid rgba(255, 255, 0, 0.7);
+}
+
+
+/* ===== Texto abaixo da imagem ===== */
+.informacoes-texto {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 10px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  color: rgb(226, 195, 20);
+}
+
+.informacoes-texto h3 {
+  font-size: 14px;
+  color: rgb(226, 195, 20);
+}
+
+.informacoes-texto ul {
+  list-style: none;
+  padding: 0;
+}
+
+.informacoes-texto li {
+  margin: 5px 0;
+  color:rgb(226, 195, 20)
+}
+
+.informacoes-texto p {
+  color: rgb(226, 195, 20)
+}
+
+/* ===== Setas do carrossel ===== */
+.seta-esquerda,
+.seta-direita {
+  font-size: 48px; /* maior */
+  color: #ffee00; /* amarelo */
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin: 0 30px; /* mais distância da foto */
+  transition: color 0.3s ease, text-shadow 0.3s ease, transform 0.2s ease;
+  text-shadow: 0 0 5px #ffea00, 0 0 10px #ffea00, 0 0 20px #ffd700;
+}
+
+.seta-esquerda:hover,
+.seta-direita:hover {
+  color: #fff88a;
+  text-shadow:
+    0 0 8px #fff88a,
+    0 0 15px #fff88a,
+    0 0 25px #fff88a,
+    0 0 40px #ffd700;
+  transform: scale(1.4);
+}
+
+.seta-esquerda:active,
+.seta-direita:active {
+  transform: scale(1.2);
+  text-shadow:
+    0 0 10px #fff88a,
+    0 0 20px #ffd700,
+    0 0 30px #fff88a;
+}
+
+
+/* Layout do carrossel */
+.conteudo-carrossel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 40px;
+  gap: 80px;
+}
+.informacoes-texto {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 14px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  color: #ffee00;
+  background: rgba(0, 0, 0, 0.5); /* fundo preto semi-transparente */
+  padding: 15px 20px;
+  border-radius: 12px;
+  text-shadow:
+    0 0 3px #ffee00,
+    0 0 6px #ffea00,
+    0 0 10px #ffd600;
+  animation: glowTextSuave 3s ease-in-out infinite alternate;
+  font-family: 'Press Start 2P', cursive;
+}
+
+.informacoes-texto h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #ffee00;
+  text-shadow:
+    0 0 5px #ffee00,
+    0 0 10px #ffd600;
+}
+
+@keyframes glowTextSuave {
+  0% {
+    text-shadow:
+      0 0 3px #ffee00,
+      0 0 6px #ffea00,
+      0 0 10px #ffd600;
+    color: #ffee00;
+  }
+  100% {
+    text-shadow:
+      0 0 6px #fffb66,
+      0 0 10px #fff054,
+      0 0 15px #ffe642;
+    color: #fff54f;
+  }
 }
