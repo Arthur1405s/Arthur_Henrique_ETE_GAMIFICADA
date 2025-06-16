@@ -3,39 +3,35 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Página Inicial - Escola Gamificada</title>
-
-  <!-- Fonte retrô estilo 8-bits -->
+  <title>Página Inicial - ETE Gamificada</title>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-
-  <!-- Importa o CSS externo -->
   <link rel="stylesheet" href="../CSS/inicio.css" />
 </head>
 <body>
 
-  <!-- BOTÃO DE MENU (ícone do cubo do Mario) -->
+  <header class="titulo-banner">
+    <h1>ETE Gamificada</h1>
+  </header>
+
+  <!-- BOTÃO DE MENU -->
   <button class="menu-toggle" id="menuToggle">
     <img src="../img/cubo.png" alt="Abrir Menu">
   </button>
 
-  <!-- PAINEL DE STATUS FIXO AO LADO DO BOTÃO DE MENU -->
+  <!-- STATUS DO USUÁRIO -->
   <div class="painel-status" id="painelStatus">
     <div class="status-card">
-      <p><strong>Nome:</strong>João Mario</p>
-      <p><strong>Casa:</strong>Reino de cogumelos</p>
+      <p><strong>Nome:</strong> Pietroll</p>
+      <p><strong>Casa:</strong> Monarcas</p>
     </div>
   </div>
 
-  <!-- SIDEBAR LATERAL -->
+  <!-- SIDEBAR -->
   <div class="sidebar" id="sidebar">
-
-    <!-- INFORMAÇÕES DO USUÁRIO -->
     <div class="user-info-sidebar">
-      <div>Usuário: João Mario</div>
-      <span>PC$: 120</span>
+      <div>Usuário: Pietroll</div>
+      <span>PC$: 1122</span>
     </div>
-
-    <!-- LINKS DE NAVEGAÇÃO -->
     <nav class="nav-links">
       <a href="#">Início</a>
       <a href="#">Leilão</a>
@@ -44,34 +40,43 @@
       <a href="#">Trocas por Benefícios</a>
       <a href="#">Regras da Taça das Casas</a>
     </nav>
-
-    <!-- BOTÃO DE SAIR -->
     <a href="login.html" class="logout-btn">Sair</a>
-
   </div>
 
-  <!-- CONTEÚDO PRINCIPAL -->
+  <!-- CARROSSEL COM IMAGEM + TEXTO (todos no HTML) -->
   <main>
-    <!-- Seção futura -->
+    <section class="conteudo-carrossel">
+      <button class="seta-esquerda">&#9664;</button>
+
+      <!-- Caixas com conteúdo (somente uma aparece por vez) -->
+      <div class="caixa-conteudo" id="conteudo0">
+        <img src="../img/harryppo.webp" alt="Taça das Casas" style="width: 100%; border-radius: 10px;">
+      </div>
+
+      <div class="caixa-conteudo" id="conteudo1" style="display: none;">
+        <img src="../img/" alt="Benefícios" style="width: 100%; border-radius: 10px;">
+      </div>
+   <button class="seta-direita">&#9654;</button>
+    </section>
+   
+
+    <!-- Textos correspondentes -->
+    <section class="informacoes-texto" id="info0">
+      <h3>🏆 TAÇA DAS CASAS  🏆</h3>
+  <p> </p>
+    </section>
+
+    <section class="informacoes-texto" id="info1" style="display: none;">
+      <h3>🛒 Compra de Benefícios</h3>
+      <p>Use seus pontos para trocar por prêmios e vantagens exclusivas!</p>
+      <ul>
+        <li>🎟️ Entrada extra no recreio</li>
+        <li>🍕 Vale lanche grátis</li>
+      </ul>
+    </section>
   </main>
- 
 
-  <!-- SCRIPT PARA TOGGLE DO MENU -->
-  <script>
-    const menuToggle = document.getElementById('menuToggle');
-    const sidebar = document.getElementById('sidebar');
-    const painelStatus = document.getElementById('painelStatus');
-
-    // Alterna classe "open" no sidebar e move o painel de status junto
-    menuToggle.addEventListener('click', () => {
-      sidebar.classList.toggle('open');
-
-      if (sidebar.classList.contains('open')) {
-        painelStatus.style.left = '290px'; // sidebar (250px) + margem
-      } else {
-        painelStatus.style.left = '70px'; // posição padrão
-      }
-    });
-  </script>
+  <!-- JavaScript -->
+  <script src="../JS/inicio.js"></script>
 </body>
 </html>
