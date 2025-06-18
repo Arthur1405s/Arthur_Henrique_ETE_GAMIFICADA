@@ -3,6 +3,89 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Página Inicial - ETE Gamificada</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../CSS/inicio.css" />
+</head>
+<body>
+
+  <header class="titulo-banner">
+    <h1>ETE Gamificada</h1>
+  </header>
+
+  <!-- BOTÃO DE MENU -->
+  <button class="menu-toggle" id="menuToggle">
+    <img src="../img/cubo.png" alt="Abrir Menu">
+  </button>
+
+  <!-- STATUS DO USUÁRIO -->
+  <div class="painel-status" id="painelStatus">
+    <div class="status-card">
+      <p><strong>Nome:</strong> Pietroll</p>
+      <p><strong>Casa:</strong> Monarcas</p>
+    </div>
+  </div>
+
+  <!-- SIDEBAR -->
+  <div class="sidebar" id="sidebar">
+    <div class="user-info-sidebar">
+      <div>Usuário: Pietroll</div>
+      <span>PC$: 1122</span>
+    </div>
+    <nav class="nav-links">
+      <a href="#">Início</a>
+      <a href="#">Leilão</a>
+      <a href="#">Perfil</a>
+      <a href="#">Tabela de Pontos</a>
+      <a href="#">Trocas por Benefícios</a>
+      <a href="#">Regras da Taça das Casas</a>
+    </nav>
+    <a href="login.html" class="logout-btn">Sair</a>
+  </div>
+
+  <!-- CARROSSEL COM IMAGEM + TEXTO (todos no HTML) -->
+  <main>
+    <section class="conteudo-carrossel">
+      <button class="seta-esquerda">&#9664;</button>
+
+      <!-- Caixas com conteúdo (somente uma aparece por vez) -->
+      <div class="caixa-conteudo" id="conteudo0">
+        <img src="../img/harryppo.webp" alt="Taça das Casas" style="width: 100%; border-radius: 10px;">
+      </div>
+
+      <div class="caixa-conteudo" id="conteudo1" style="display: none;">
+        <img src="../img/" alt="Benefícios" style="width: 100%; border-radius: 10px;">
+      </div>
+   <button class="seta-direita">&#9654;</button>
+    </section>
+   
+
+    <!-- Textos correspondentes -->
+    <section class="informacoes-texto" id="info0">
+      <h3>🏆 TAÇA DAS CASAS  🏆</h3>
+  <p> </p>
+    </section>
+
+    <section class="informacoes-texto" id="info1" style="display: none;">
+      <h3>🛒 Compra de Benefícios</h3>
+      <p>Use seus pontos para trocar por prêmios e vantagens exclusivas!</p>
+      <ul>
+        <li>🎟️ Entrada extra no recreio</li>
+        <li>🍕 Vale lanche grátis</li>
+      </ul>
+    </section>
+  </main>
+
+  <!-- JavaScript -->
+  <script src="../JS/inicio.js"></script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Página Inicial - Escola Gamificada</title>
 
   <!-- Fonte retrô estilo 8-bits -->
