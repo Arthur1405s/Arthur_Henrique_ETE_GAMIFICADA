@@ -1,140 +1,328 @@
-/* ===== Fonte Retro ===== */
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
-
-/* ===== Estilo Global ===== */
-body {
+/* Reset básico */
+* {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   font-family: 'Press Start 2P', cursive;
-  background-color: beige;
-  background-size: cover;
-  background-position: center;
-  height: 100vh;
+}
+
+body {
+  background-color: #000;
+  color: #fff;
+  font-size: 14px;
   overflow-x: hidden;
 }
 
-/* ===== Botão do Menu ===== */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #111;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 2000;
+  border-bottom: 2px solid #f5d92f;
+}
+
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Press Start 2P', cursive;
+  color: #ffee00;
+  font-size: 12px;
+}
+
+.navbar-logo img {
+  width: 40px;
+  height: auto;
+}
+
+.navbar-links {
+  display: flex;
+  gap: 100px;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 10px;
+}
+
+.navbar-links a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.navbar-links a:hover {
+  color: #f5d92f;
+}
+
+.logout {
+  color: #f44336 !important;
+   margin-top: 200px;
+
+}
+
+.modal-logout {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #000000;
+  padding: 25px 30px;
+  border-radius: 12px;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.botoes-modal {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+}
+
+.botoes-modal button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: 0.2s;
+}
+
+#confirmarLogout {
+  background-color: #e73c3c;
+  color: white;
+}
+
+#cancelarLogout {
+  background-color: #fbff00;
+  color: #2c3e50;
+}
+
+
+.titulo-a {
+  position: absolute;
+  top: 30px; /* distância do topo */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  text-align: center;
+}
+
+.sub-titulo {
+    position: absolute;
+  top: 70px; /* distância do topo */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  text-align: center;
+}
+
+.titulo-a h1 {
+  font-size: 24px;
+  color: #ffee00; /* amarelo estilo retrô */
+  text-shadow: 2px 2px 0 #000;
+}
+
+/* Botão menu */
 .menu-toggle {
   position: fixed;
   top: 20px;
-  left: 20px;
-  background: none;
+  left: 10px;
+  background: transparent;
   border: none;
   cursor: pointer;
-  z-index: 1000; /* acima de tudo */
+  z-index: 1100;
+}
+
+.sub-titulo p {
+
+  font-size: 14px;
+  color: #ffee00; /* amarelo estilo retrô */
+  text-shadow: 2px 2px 0 #000;
 }
 
 .menu-toggle img {
   width: 40px;
   height: 40px;
+  margin-top: 40px;
+  margin-left: 3px;
 }
 
-/* ===== Painel de Status do Jogador (fixo) ===== */
-.painel-status {
-  position: fixed;
-  top: 20px;
-  left: 70px;
-  z-index: 999;
-  transition: left 0.3s ease-in-out;
+
+
+
+
+.painel-status-sidebar {
+  margin-bottom: 60px;
+  margin-top: -60px;
+  font-size: 12px;
+  color: #e9dc48;
+  font-family: 'Press Start 2P', monospace;
+  line-height: 2.0;
+  padding: 5px 0;
+  border-bottom: 1px solid #333;
 }
 
-/* Cartão com informações */
-.status-card {
-  background-color: rgba(255, 255, 255, 0.25);
-  padding: 10px 15px;
-  border-radius: 10px;
-  font-size: 9px;
-  color: #000;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-}
 
-/* Texto do status */
-.status-card p {
-  margin: 4px 0;
-  font-size: 9px;
-}
-
-/* ===== Sidebar Lateral ===== */
+/* Sidebar */
 .sidebar {
   position: fixed;
-  top: 0;
+  top: 100px;
   left: 0;
   width: 250px;
-  height: 100%;
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(10px);
-  box-shadow: 4px 0 10px rgba(0, 0, 0, 0.3);
-  padding: 90px 20px 20px;
-  transform: translateX(-100%);
-  transition: transform 0.3s ease-in-out;
-  z-index: 998;
-
+  height: 100vh;
+  background-color: #111;
+  padding: 55px;
+  transform: translateX(-250px);
+  transition: transform 0.3s ease;
+  z-index: 1080;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  justify-content: flex-start;
+  font-size: 13px;
+  color: #ccc;
+  overflow-y: auto;
 }
 
-/* Quando aberta, aparece */
 .sidebar.open {
   transform: translateX(0);
 }
 
-/* ===== Info do Usuário no topo da sidebar ===== */
-.user-info-sidebar {
-  background-color: rgba(255, 255, 255, 0.3);
-  color: #000;
-  text-align: center;
-  padding: 15px 10px;
-  border-radius: 10px;
-  font-size: 9px;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-}
 
-/* Pontuação do usuário */
-.user-info-sidebar span {
-  display: block;
-  margin-top: 5px;
-  font-size: 8px;
-  color: green;
-}
 
-/* ===== Links de Navegação ===== */
-.nav-links {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
+/* Navegação */
 .nav-links a {
-  background: rgba(255, 255, 255, 0.25);
-  text-align: center;
-  padding: 10px;
-  border-radius: 12px;
+  display: block;
+  padding: 8px 5px;
+  color: #ccc;
   text-decoration: none;
-  color: #000;
-  font-size: 9px;
-  transition: all 0.3s ease;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid #222;
+  font-size: 13px;
+  transition: color 0.3s ease;
 }
 
 .nav-links a:hover {
-  background: rgba(255, 255, 255, 0.4);
-  color: #d90000;
+  color: #f5d92f;
 }
 
-/* ===== Botão de Sair ===== */
+/* Botão sair */
 .logout-btn {
-  background-color: #ff4d4d;
-  color: white;
+  margin-top: auto;
+  font-size: 13px;
+  color: #f44336;
+  font-weight: 600;
   text-align: center;
-  padding: 10px;
-  border: none;
-  border-radius: 10px;
-  font-size: 9px;
-  cursor: pointer;
   text-decoration: none;
-  transition: background 0.3s;
+  cursor: pointer;
 }
 
-.logout-btn:hover {
-  background-color: #cc0000;
+/* Conteúdo central */
+.conteudo-central {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding-left: 80px;
+  padding-right: 80px;
+  text-align: center;
+  user-select: none;
+}
+
+/* Imagem Taça */
+
+
+/* Título */
+/* Efeito de chama amarela */
+.imagem-taca {
+  width: 550px;         /* largura padrão */
+  height: 330px;        /* altura padrão */
+  object-fit: cover;    /* corta o excesso e mantém proporção */
+  display: block;
+  margin: 0 auto;
+  border-radius: 10px;
+  box-shadow: 0 0 15px #f5d92f;
+  animation: chama-amarela 1.5s infinite ease-in-out;
+}
+
+
+@keyframes chama-amarela {
+  0% {
+    box-shadow: 0 0 10px #f5d92f, 0 0 20px #f5d92f;
+  }
+  50% {
+    box-shadow: 0 0 30px #ffeb3b, 0 0 60px #fdd835;
+  }
+  100% {
+    box-shadow: 0 0 10px #f5d92f, 0 0 20px #f5d92f;
+  }
+}
+
+.titulo-taca
+  {
+  margin: 25px;
+    color: #fdd835;
+  }
+
+
+/* Botões seta */
+.seta {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: transparent;
+  border: none;
+  color: #ffff00;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 8px;
+  user-select: none;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  z-index: 10;
+  
+}
+
+.seta:hover {
+ 
+  box-shadow: 0 0 15px #f5d92f, 0 0 25px #f5d92f;
+}
+
+.seta.esquerda {
+  left: calc(50% - 450px); /* antes era 160px, aumentei 40px */
+}
+
+.seta.direita {
+  right: calc(50% - 450px);
+}
+
+.footer {
+  width: 100%;
+  padding: 20px 10px;
+  background-color: #111;
+  color: #f5d92f;
+  text-align: center;
+  font-size: 9px;
+  font-family: 'Press Start 2P', cursive;
+  border-top: 1px solid #333;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
 }

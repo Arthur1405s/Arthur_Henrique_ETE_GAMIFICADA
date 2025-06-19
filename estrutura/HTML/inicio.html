@@ -2,159 +2,122 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Página Inicial - ETE Gamificada</title>
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../CSS/inicio.css" />
-</head>
-<body>
-
-  <header class="titulo-banner">
-    <h1>ETE Gamificada</h1>
-  </header>
-
-  <!-- BOTÃO DE MENU -->
-  <button class="menu-toggle" id="menuToggle">
-    <img src="../img/cubo.png" alt="Abrir Menu">
-  </button>
-
-  <!-- STATUS DO USUÁRIO -->
-  <div class="painel-status" id="painelStatus">
-    <div class="status-card">
-      <p><strong>Nome:</strong> Pietroll</p>
-      <p><strong>Casa:</strong> Monarcas</p>
-    </div>
-  </div>
-
-  <!-- SIDEBAR -->
-  <div class="sidebar" id="sidebar">
-    <div class="user-info-sidebar">
-      <div>Usuário: Pietroll</div>
-      <span>PC$: 1122</span>
-    </div>
-    <nav class="nav-links">
-      <a href="#">Início</a>
-      <a href="#">Leilão</a>
-      <a href="#">Perfil</a>
-      <a href="#">Tabela de Pontos</a>
-      <a href="#">Trocas por Benefícios</a>
-      <a href="#">Regras da Taça das Casas</a>
-    </nav>
-    <a href="login.html" class="logout-btn">Sair</a>
-  </div>
-
-  <!-- CARROSSEL COM IMAGEM + TEXTO (todos no HTML) -->
-  <main>
-    <section class="conteudo-carrossel">
-      <button class="seta-esquerda">&#9664;</button>
-
-      <!-- Caixas com conteúdo (somente uma aparece por vez) -->
-      <div class="caixa-conteudo" id="conteudo0">
-        <img src="../img/harryppo.webp" alt="Taça das Casas" style="width: 100%; border-radius: 10px;">
-      </div>
-
-      <div class="caixa-conteudo" id="conteudo1" style="display: none;">
-        <img src="../img/" alt="Benefícios" style="width: 100%; border-radius: 10px;">
-      </div>
-   <button class="seta-direita">&#9654;</button>
-    </section>
-   
-
-    <!-- Textos correspondentes -->
-    <section class="informacoes-texto" id="info0">
-      <h3>🏆 TAÇA DAS CASAS  🏆</h3>
-  <p> </p>
-    </section>
-
-    <section class="informacoes-texto" id="info1" style="display: none;">
-      <h3>🛒 Compra de Benefícios</h3>
-      <p>Use seus pontos para trocar por prêmios e vantagens exclusivas!</p>
-      <ul>
-        <li>🎟️ Entrada extra no recreio</li>
-        <li>🍕 Vale lanche grátis</li>
-      </ul>
-    </section>
-  </main>
-
-  <!-- JavaScript -->
-  <script src="../JS/inicio.js"></script>
-</body>
-</html>
-
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Página Inicial - Escola Gamificada</title>
 
   <!-- Fonte retrô estilo 8-bits -->
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-
-  <!-- Importa o CSS externo -->
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+  <!-- CSS -->
   <link rel="stylesheet" href="../CSS/inicio.css" />
 </head>
-<body>
 
-  <!-- BOTÃO DE MENU (ícone do cubo do Mario) -->
+
+<footer class="footer">
+  <p>© 2025 ETE Gamificada - Todos os direitos reservados.</p>
+  <p>Versão 1.0 • Última atualização: Junho de 2025</p>
+</footer>
+
+
+<body>
+  <div id="modalLogout" class="modal-logout">
+  <div class="modal-content">
+    <p>Ao sair da sua conta, todo o login precisará ser refeito.<br>Deseja realmente sair?</p>
+
+    <div class="botoes-modal">
+      <button id="confirmarLogout">Sim</button>
+      <button id="cancelarLogout">Cancelar</button>
+    </div>
+  </div>
+</div>
+
+
+<header class="navbar">
+  <div class="navbar-logo">
+    <img src="../img/logo-ete-2.png" alt="Logo ETE" />
+    <span>ETE Gamificada</span>
+  </div>
+
+  <nav class="navbar-links">
+    <a href="#">Home</a>
+    <a href="#">Procurar</a>
+    <a href ="#">Sobre</a>
+    <a href="#">Casas</a>
+    <a href="#">Punições</a>
+    
+  </nav>
+</header>
+
+
+
+
+  <div class="sub-titulo">
+  <p> Confira os nossos próximos eventos abaixo!</p>
+</div>
+
+  <!-- Botão menu -->
   <button class="menu-toggle" id="menuToggle">
-    <img src="../img/cubo.png" alt="Abrir Menu">
+    <img src="../img/cubo.png" alt="Abrir Menu" />
   </button>
 
-  <!-- PAINEL DE STATUS FIXO AO LADO DO BOTÃO DE MENU -->
-  <div class="painel-status" id="painelStatus">
-    <div class="status-card">
-      <p><strong>Nome:</strong>João Mario</p>
-      <p><strong>Casa:</strong>Reino de cogumelos</p>
-    </div>
-  </div>
 
-  <!-- SIDEBAR LATERAL -->
+  <!-- Sidebar -->
   <div class="sidebar" id="sidebar">
+  
+      <div class="painel-status-sidebar">
+ <p><span class="material-symbols-outlined">person</span>:Pietroll</p>
+ <p><span class="material-symbols-outlined">home</span>:Monarcas</p>
+<p><span class="material-symbols-outlined">shopping_cart</span>:1278 PC$ <PC$></p>
 
-    <!-- INFORMAÇÕES DO USUÁRIO -->
+
     <div class="user-info-sidebar">
-      <div>Usuário: João Mario</div>
-      <span>PC$: 120</span>
+     
+</div>
+
+
     </div>
 
-    <!-- LINKS DE NAVEGAÇÃO -->
-    <nav class="nav-links">
-      <a href="#">Início</a>
-      <a href="#">Leilão</a>
-      <a href="#">Perfil</a>
-      <a href="#">Tabela de Pontos</a>
-      <a href="#">Trocas por Benefícios</a>
-      <a href="#">Regras da Taça das Casas</a>
-    </nav>
+  <div class="nav-area">
+  <nav class="nav-links">
+    <a href="#">Carrinho</a>
+    <a href="#">Perfil</a>
+    <a href="#">Baús</a>
+    <a href="#">Cartas</a>
+    <a href="#">Ajuda</a>
+    <a href="#">Configurações</a>
+    <a href="#" class="logout" id="botaoLogout">
+  <span class="material-symbols-outlined">logout</span>
+</a>
 
-    <!-- BOTÃO DE SAIR -->
-    <a href="login.html" class="logout-btn">Sair</a>
+</span></a>
+  </nav>
+
+ 
+</div>
 
   </div>
 
-  <!-- CONTEÚDO PRINCIPAL -->
-  <main>
-    <!-- Seção futura -->
-  </main>
- 
+  <!-- Conteúdo central -->
+<main class="conteudo-central">
+  <button class="seta esquerda" onclick="mudarEvento(-1)"><</button>
 
-  <!-- SCRIPT PARA TOGGLE DO MENU -->
-  <script>
-    const menuToggle = document.getElementById('menuToggle');
-    const sidebar = document.getElementById('sidebar');
-    const painelStatus = document.getElementById('painelStatus');
+<div class="evento" id="evento">
+  <img src="../img/quadriboll.png" alt="Evento" class="imagem-taca" id="imagemEvento">
+  <h1 class="titulo-taca" id="tituloEvento">Taça das Casas</h1>
+  <p class="descricao-taca" id="descricaoEvento"></p>
+</div>
 
-    // Alterna classe "open" no sidebar e move o painel de status junto
-    menuToggle.addEventListener('click', () => {
-      sidebar.classList.toggle('open');
 
-      if (sidebar.classList.contains('open')) {
-        painelStatus.style.left = '290px'; // sidebar (250px) + margem
-      } else {
-        painelStatus.style.left = '70px'; // posição padrão
-      }
-    });
-  </script>
+  <button class="seta direita" onclick="mudarEvento(1)">></button>
+
+
+</main>
+
+
+
+
+
+  <!-- JS -->
+  <script src="../JS/inicio.js"></script>
 </body>
 </html>
