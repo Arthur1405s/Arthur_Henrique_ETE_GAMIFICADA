@@ -1,106 +1,137 @@
-// Aguarda o carregamento do DOM
+/* ===========================================================
+ *  cadastre‑se.js  –  LÓGICA COMPLETA DO FORMULÁRIO DE CADASTRO
+ *  -----------------------------------------------------------
+ *  • Valida senha forte em tempo real (8+ car., maiúsc., minúsc.,
+ *    número e caractere especial)                          ✔
+ *  • Verifica se confirmação de senha coincide             ✔
+ *  • Valida formato de e‑mail (regex simples)              ✔
+ *  • Garante que o tipo de usuário foi selecionado         ✔
+ *  • Mostra mensagens claras de erro / sucesso             ✔
+ *  • Totalmente comentado passo a passo                    ✔
+ * ===========================================================
+ */
+
 document.addEventListener('DOMContentLoaded', () => {
-  // Seleciona elementos importantes
-  const form = document.getElementById('form-cadastro');
-  const mensagemGeral = document.getElementById('mensagem');
-  const senhaInput = document.getElementById('senha');
-  const confirmarSenhaInput = document.getElementById('confirmarSenha');
-  const mensagemSenha = document.getElementById('mensagem-senha');
-  const mensagemConfirmarSenha = document.getElementById('mensagem-confirmar-senha');
+  /* ---------- ELEMENTOS DO DOM ---------- */
+  const form                = document.getElementById('form-cadastro');
+  const msgGeral            = document.getElementById('mensagem');
 
-  // Regex para validar senha forte:
-  // Pelo menos 8 caracteres
-  // Pelo menos 1 letra minúscula
-  // Pelo menos 1 letra maiúscula
-  // Pelo menos 1 número
-  // Pelo menos 1 caractere especial (não alfanumérico)
+  const nomeInput           = document.getElementById('nome');
+  const emailInput          = document.getElementById('email');
+  const tipoSelect          = document.getElementById('tipoUsuario');
+
+  const senhaInput          = document.getElementById('senha');
+  const confSenhaInput      = document.getElementById('confirmarSenha');
+
+  const msgSenha            = document.getElementById('mensagem-senha');
+  const msgConfirmaSenha    = document.getElementById('mensagem-confirmar-senha');
+
+  /* ---------- REGEX DE VALIDAÇÃO ---------- */
+  // Senha forte: 8+ chars, 1 minúsc., 1 maiúsc., 1 número, 1 símbolo
   const regexSenhaForte = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
+  // E‑mail simples (usuario@dominio.ext)
+  const regexEmail      = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-  // Validação em tempo real da senha (ao digitar)
+  /* =========================================================
+   *  VALIDAÇÃO EM TEMPO REAL –  SENHA
+   * =======================================================*/
   senhaInput.addEventListener('input', () => {
     const senha = senhaInput.value;
 
     if (!regexSenhaForte.test(senha)) {
-      mensagemSenha.textContent = 'A senha deve ter 8+ caracteres, letra maiúscula, minúscula, número e caractere especial.';
+      msgSenha.textContent =
+        'A senha precisa de 8+ caracteres, maiúscula, minúscula, número e símbolo.';
     } else {
-      mensagemSenha.textContent = '';
+      msgSenha.textContent = '';
     }
 
-    // Também limpa a mensagem de confirmação se senha mudar
-    mensagemConfirmarSenha.textContent = '';
+    /* Se a senha mudou, limpe aviso de confirmação */
+    msgConfirmaSenha.textContent = '';
   });
 
-  // Validação em tempo real da confirmação da senha
-  confirmarSenhaInput.addEventListener('input', () => {
-    if (confirmarSenhaInput.value !== senhaInput.value) {
-      mensagemConfirmarSenha.textContent = 'As senhas não coincidem!';
+  /* =========================================================
+   *  VALIDAÇÃO EM TEMPO REAL –  CONFIRMAÇÃO DE SENHA
+   * =======================================================*/
+  confSenhaInput.addEventListener('input', () => {
+    if (confSenhaInput.value !== senhaInput.value) {
+      msgConfirmaSenha.textContent = 'As senhas não coincidem!';
     } else {
-      mensagemConfirmarSenha.textContent = '';
+      msgConfirmaSenha.textContent = '';
     }
   });
 
-  // Ao enviar o formulário
+  /* =========================================================
+   *  ENVIO DO FORMULÁRIO
+   * =======================================================*/
   form.addEventListener('submit', (event) => {
-    event.preventDefault(); // Previne envio padrão (reload)
+    event.preventDefault(); // Evita recarregar a página
 
-    const nome = document.getElementById('nome').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const tipoUsuario = document.getElementById('tipoUsuario').value;
-    const senha = senhaInput.value;
-    const confirmarSenha = confirmarSenhaInput.value;
+    /* --- COLETA DE DADOS --- */
+    const nome        = nomeInput.value.trim();
+    const email       = emailInput.value.trim();
+    const tipoUsuario = tipoSelect.value;
+    const senha       = senhaInput.value;
+    const confirmar   = confSenhaInput.value;
 
-    // Verifica senha forte
+    /* --- VALIDAÇÕES MANUAIS --- */
+
+    /* 1. E‑mail válido? */
+    if (!regexEmail.test(email)) {
+      msgGeral.style.color = 'red';
+      msgGeral.textContent = 'Informe um e‑mail válido.';
+      emailInput.focus();
+      return;
+    }
+
+    /* 2. Senha forte? */
     if (!regexSenhaForte.test(senha)) {
-      mensagemGeral.style.color = 'red';
-      mensagemGeral.textContent = 'Senha fraca! Atenda aos requisitos mínimos.';
+      msgGeral.style.color = 'red';
+      msgGeral.textContent = 'Senha fraca! Siga os requisitos.';
       senhaInput.focus();
       return;
     }
 
-    // Verifica se as senhas coincidem
-    if (senha !== confirmarSenha) {
-      mensagemGeral.style.color = 'red';
-      mensagemGeral.textContent = 'As senhas não coincidem!';
-      confirmarSenhaInput.focus();
+    /* 3. Senhas iguais? */
+    if (senha !== confirmar) {
+      msgGeral.style.color = 'red';
+      msgGeral.textContent = 'As senhas não coincidem!';
+      confSenhaInput.focus();
       return;
     }
 
-    // Verifica se o tipo de usuário foi selecionado
+    /* 4. Tipo de usuário selecionado? */
     if (!tipoUsuario) {
-      mensagemGeral.style.color = 'red';
-      mensagemGeral.textContent = 'Por favor, selecione o tipo de usuário.';
-      document.getElementById('tipoUsuario').focus();
+      msgGeral.style.color = 'red';
+      msgGeral.textContent = 'Selecione o tipo de usuário.';
+      tipoSelect.focus();
       return;
     }
 
-    // Aqui você pode enviar os dados para o backend via fetch, axios, etc.
-    // Exemplo fictício:
+    /* ---------- AQUI VAI A CHAMADA AO BACK‑END ---------- */
+    // Exemplo (fictício):
     /*
     fetch('/api/cadastrar', {
-      method: 'POST',
+      method : 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ nome, email, tipoUsuario, senha })
+      body   : JSON.stringify({ nome, email, tipoUsuario, senha })
     })
-    .then(res => res.json())
-    .then(data => {
-      mensagemGeral.style.color = 'green';
-      mensagemGeral.textContent = `Cadastro realizado com sucesso, ${nome}!`;
-      form.reset();
-    })
-    .catch(err => {
-      mensagemGeral.style.color = 'red';
-      mensagemGeral.textContent = 'Erro ao cadastrar, tente novamente.';
-    });
+      .then(res  => res.json())
+      .then(data => {
+        msgGeral.style.color = 'green';
+        msgGeral.textContent = `Cadastro realizado com sucesso, ${nome}!`;
+        form.reset();
+      })
+      .catch(err => {
+        msgGeral.style.color = 'red';
+        msgGeral.textContent = 'Erro no cadastro. Tente novamente.';
+      });
     */
 
-    // Simulação de sucesso:
-    mensagemGeral.style.color = 'green';
-    mensagemGeral.textContent = `Cadastro realizado com sucesso, ${nome}!`;
-
-    // Limpa formulário
-    form.reset();
-    // Limpa mensagens de erro
-    mensagemSenha.textContent = '';
-    mensagemConfirmarSenha.textContent = '';
+    /* ----- SIMULAÇÃO DE SUCESSO (frontend) ----- */
+    msgGeral.style.color = 'green';
+    msgGeral.textContent = `Cadastro realizado com sucesso, ${nome}!`;
+    form.reset();                      // Limpa o formulário
+    msgSenha.textContent        = '';  // Limpa avisos
+    msgConfirmaSenha.textContent = '';
   });
 });
