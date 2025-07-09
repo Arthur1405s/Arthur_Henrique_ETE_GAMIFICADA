@@ -81,12 +81,14 @@ app.post('/login', async (req, res) => {
   try {
     const usuario = await Usuario.findOne({ email });
     if (!usuario) {
+      console.log('Usuário não encontrado:', email);
       return res.status(400).json({ mensagem: 'Usuário não encontrado.' });
     }
 
     // Compara senha digitada com a criptografada
     const senhaCorreta = await bcrypt.compare(senha, usuario.senha);
     if (!senhaCorreta) {
+      
       return res.status(401).json({ mensagem: 'Senha incorreta.' });
     }
 
